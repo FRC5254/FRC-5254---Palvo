@@ -39,5 +39,7 @@ public class RobotMap {
 	public static final double  TURN_I = 0.0;
 	public static final double  TURN_D = 0.0;
 	
-	
+	//Climber
+	public static final int CLIMBER_MOTOR = 0;
+	public static final int CLIMBER_MOTOR2 = 0;
 }

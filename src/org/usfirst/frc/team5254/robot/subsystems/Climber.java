@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5254.robot.subsystems;
 import org.usfirst.frc.team5254.robot.RobotMap;
+import org.usfirst.frc.team5254.robot.commands.ClimberStopClimbing;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
@@ -14,14 +16,24 @@ public class Climber extends Subsystem {
 	
 	public Climber () {
 		climberMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+		climberMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+		climberMotor.configNominalOutputVoltage(+0.0f,-0.0f);
+		climberMotor.configPeakOutputVoltage(+12.0f,-0.0f);
+		climberMotor.reverseSensor(false);
+		climberMotor.reverseOutput(true);
 		
+		climberMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
+		climberMotor2.set(RobotMap.CLIMBER_MOTOR);
+		climberMotor2.reverseOutput(false);
 	}
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-
+	@Override
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new ClimberStopClimbing());
     }
     
+	public void on (double percent) {
+		climberMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+		climberMotor.configPeakOutputVoltage(+12.0f,-0.0f);
+		climberMotor.set(percent);
+	}
 }

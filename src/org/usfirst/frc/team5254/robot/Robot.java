@@ -92,6 +92,8 @@ public class Robot extends IterativeRobot {
 	NetworkTable table;
 	public static OI oi;
 	public static Drivetrain Drivetrain = new Drivetrain();
+	public static Climber Climber = new Climber();
+	public static GearMech GearMech = new GearMech();
 
 	// Auto modes
 	private final String NothingAuto = "Nothing";

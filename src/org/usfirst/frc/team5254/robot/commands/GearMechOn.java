@@ -7,15 +7,16 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ClimberGO extends Command {
-
-	boolean go;
+public class GearMechOn extends Command {
 	
-    public ClimberGO(boolean go) {
+	boolean intake;
+	
+    public GearMechOn(boolean intake) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.Climber);
-    	this.go = go;
+    	requires(Robot.GearMech);
+    	this.intake = intake;
+    	
     }
 
     // Called just before this Command runs the first time
@@ -24,7 +25,7 @@ public class ClimberGO extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Climber.on(go);
+    	Robot.GearMech.on(intake);
     }
 
     // Make this return true when this Command no longer needs to run execute()

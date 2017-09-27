@@ -13,9 +13,9 @@ public class AutoDriveToDistance extends Command {
 	double Distance;
 
 	public AutoDriveToDistance(double Throttle, double Distance) {
-		this.Throttle = Throttle;
+		this.Throttle = Throttle;//scale of 1 to -1
 
-		this.Distance = Distance;
+		this.Distance = Distance; // Distance is measured in inches
 	}
 
 	// Called just before this Command runs the first time

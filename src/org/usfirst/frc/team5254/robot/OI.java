@@ -2,7 +2,6 @@ package org.usfirst.frc.team5254.robot;
 
 import org.usfirst.frc.team5254.robot.commands.*;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -10,59 +9,12 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
- *                                                              .:'';,`                                                            
-                                                          ;'',      .'''`                                                        
-                                                       `''              ,':                                                      
-                                                      ':                  `',                                                    
-                                                    :'                      ,'                                                   
-                                                   '.        .'''''':         '                                                  
-                                                  '       .'':''''''''''       '`                                                
-                                                 '      .'''':::;'''''''''      '`                                               
-                                                '      ''''''::::::''''''''      '                                               
-                                               :.     '''''::::::::''''''''',     '                                              
-                                               '     '''':::::::::''''''''''',    `'                                             
-                                              '     '':::::::::::'''''''''''''`    '                                             
-                                             `:    '::::::::::::'''''''''''''''     '                                            
-                                             '   `:::::::::::::'''''''''''''''''    '                                            
-    ::::::::::::::::`     :::::::::::::`     ' :::::::::::''':'''''::;''''''''''     '    `::::::::::::::::     :::         :::  
-   `::::::::::::::::     `::::::::::::::`   ;:::::::::::'''';'''''':::::'''''''''    '    ,::::::::::::::::     :::         :::  
-   ,::::::::::::::::     ::::::::::::::::   '::::::::;''''''''''''':::::::'''''''    ;    :::::::::::::::::     ::.         :::  
-   :::                                :::   '::::::''''''''''''';::::::::''''''''`    ,   :::                  .::          ::,  
-   :::                                :::   ;:::;'''''''''''''::::::::::''''''''''    '   :::                  :::         `::`  
-   :::                                :::  .::''''''''''''';:::::::::::'''''''''''    '   :::                  :::         ,::   
-   :::                               :::   :''''''''''''':::::::::::::''''''''''''    '  `::`                  :::         :::   
-  `:::::::::::::::        ,::::::::::::`   ''''''''''';:::::::::::'::''''':'''''''    '  ::::::::::::::::      :::         :::   
-  :::::::::::::::::      :::::::::::::     ''''''''':::::::::::;''':'''''':::'''''    '  :::::::::::::::::     :::         :::   
-                :::     :::,               ;'''''':::::::::::''''''''''''':::::;''    '               `:::     ::::::::::::::::: 
-                 ::`    :::                ,''';:::::::::::'''''''''''''::::::::''    '                ,::     ,:::::::::::::::: 
-                `::    `::                 `':::::::::::'''''''''''''':::::::::'''    '                ,::      `::::::::::::::, 
-                :::    ,::                  ':::::::::''''''''''''':::::::::::'''`    ;                :::                :::    
- `````````````.:::,    :::`````````````     '::::::;'''''''''''''::::::::::::''''    ,  `````````````,:::`                :::    
- :::::::::::::::::     ::::::::::::::::     '::::'''''''''''''::::::::::::::'''''    '  :::::::::::::::::                 :::    
- ::::::::::::::::      ::::::::::::::::     `;;''''''''''''':::::::::::'';:'''''     '  :::::::::::::::.                  ::.    
- `````````````         ````````````````      '''''''''''';:::::::::::'''';''''''    :   `````````````                     ``     
-                                             :''''''''':::::::::::;''''''''''''     '                                            
-                                              '''''';:::::::::::''''''''''''''     :`                                            
-                                              .''':::::::::::;'''''''''''''''`     '                                             
-                                               ':::::::::::'''''''''''''''''`     '                                              
-                                                ':::::::;''''''''''''''''''      ;.                                              
-                                                 '::::   '''''''''''''''':      ,'                                               
-                                                  ',      `'''''''''''':       ,'                                                
-                                                   '          :'''';`         ;'                                                 
-                                                    '`                       '.                                                  
-                                                     ;'                    :'                                                    
-                                                       ''                :'`                                                     
-                                                         ;''`         :''                                                        
-                                                            ,'''''''':                                                           
-
- 
- * You're Welcome
  */
 
 public class OI {
 
 	// defining the controllers for the driver and operator
-	public Joystick driver = new Joystick(RobotMap.DRIVER_JOYSTICK);
+	public XboxController driver = new XboxController(RobotMap.DRIVER_JOYSTICK);
 	public XboxController operator = new XboxController(RobotMap.OPERATOR_JOYSTICK);
 
 	@SuppressWarnings("unused")
@@ -98,19 +50,38 @@ public class OI {
 		 * shift up Right Bumper = shift down B = stop hat spinning/stop
 		 * shooting
 		 */
-		DriverButtonBack.whenPressed(new DrivetrainSlowTurn());
+		
+		//DriverButtonA.whenPressed(command);
+		//DriverButtonB.whenPressed(command);
+		//DriverButtonX.whenPressed(command);
+		//DriverButtonBack.whenPressed(new DrivetrainSlowTurn());
 		DriverButtonBack.whenInactive(new DrivetrainDriveWithJoystick());
+		//DriverButtonStart.whenPressed(command);
 		DriverButtonBumperLeft.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperLeft.whenInactive(new DrivetrainShiftDown());
 		DriverButtonBumperRight.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
-		// DriverButtonLeftJoystickPress.whenPressed(command);
-		// DriverButtonRightJoystickPress.whenPressed(command);
+		//DriverButtonLeftJoystickPress.whenPressed(command);
+		//DriverButtonRightJoystickPress.whenPressed(command);
 
 		
+<<<<<<< HEAD
 		// OperatorButtonStart.whenPressed(command());
 		OperatorButtonX.whenPressed(new ClimberGo(true));
 		OperatorButtonA.cancelWhenPressed(new ClimberStopClimbing());
+=======
+		//OperatorButtonA.whenPressed(command);
+		OperatorButtonB.whenPressed(new GearMechPowersDeactivate());//TODO does this make sense
+		OperatorButtonB.whenPressed(new ClimberStop());
+		OperatorButtonX.whenPressed(new ClimberGO(true));
+		//OperatorButtonY.whenPressed(command);
+		//OperatorButtonBack.whenPressed(command);
+		//OperatorButtonStart.whenPressed(command);
+		//OperatorButtonBumperLeft.whenPressed(command);
+		//OperatorButtonBumperRight.whenPressed(command);
+		//OperatorButtonLeftJoystickPress.whenPressed(command);
+		//OperatorButtonLeftJoystickPress.whenPressed(command);
+>>>>>>> refs/remotes/origin/Untested-Code
 	}
 
 }

@@ -1,15 +1,24 @@
 package org.usfirst.frc.team5254.robot.commands;
 
+import org.usfirst.frc.team5254.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class ClimberGo extends Command {
-
-    public ClimberGo() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+	
+	double climberspeed;
+	
+    public ClimberGo(boolean direction) {
+    	requires(Robot.Climber);
+    	if (direction == true) {
+    		climberspeed = -1.0;
+    	} else {
+    		climberspeed = 1.0;
+    	}
+    	
     }
 
     // Called just before this Command runs the first time
@@ -18,6 +27,7 @@ public class ClimberGo extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.Climber.on(climberspeed); 
     }
 
     // Make this return true when this Command no longer needs to run execute()

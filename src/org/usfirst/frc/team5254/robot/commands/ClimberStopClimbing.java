@@ -1,5 +1,9 @@
 package org.usfirst.frc.team5254.robot.commands;
 
+
+import org.usfirst.frc.team5254.robot.Robot;
+import org.usfirst.frc.team5254.robot.subsystems.Climber;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -10,6 +14,7 @@ public class ClimberStopClimbing extends Command {
     public ClimberStopClimbing() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.Climber);
     }
 
     // Called just before this Command runs the first time
@@ -18,6 +23,7 @@ public class ClimberStopClimbing extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.Climber.off();
     }
 
     // Make this return true when this Command no longer needs to run execute()

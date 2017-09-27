@@ -35,5 +35,10 @@ public class Climber extends Subsystem {
 		climberMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		climberMotor.configPeakOutputVoltage(+12.0f,-0.0f);
 		climberMotor.set(percent);
+		
+		
+	}
+	public void off() {
+		climberMotor.set(0);
 	}
 }

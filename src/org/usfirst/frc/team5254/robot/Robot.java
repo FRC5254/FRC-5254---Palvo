@@ -92,6 +92,7 @@ public class Robot extends IterativeRobot {
 	NetworkTable table;
 	public static OI oi;
 	public static Drivetrain Drivetrain = new Drivetrain();
+	public static Climber Climber = new Climber();
 
 	// Auto modes
 	private final String NothingAuto = "Nothing";

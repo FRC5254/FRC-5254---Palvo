@@ -93,10 +93,6 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Drivetrain Drivetrain = new Drivetrain();
 	public static Climber Climber = new Climber();
-<<<<<<< HEAD
-=======
-	public static GearMech GearMech = new GearMech();
->>>>>>> refs/remotes/origin/Untested-Code
 
 	// Auto modes
 	private final String NothingAuto = "Nothing";

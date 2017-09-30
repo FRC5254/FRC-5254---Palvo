@@ -70,6 +70,11 @@ public void on(boolean intake) { //TODO does this work?
     public boolean gearMechSetPointReached() {
     	return potAngle < RobotMap.TOP_SET_POINT_ANGLE; //TODO this number needs tuning
     }
+    
+    public void drivePivotMotor(double power) {
+    	gearMechPivot.set(power);
+    	
+    }
 }
 
 

@@ -42,4 +42,9 @@ public class RobotMap {
 	//Climber
 	public static final int CLIMBER_MOTOR = 0;
 	public static final int CLIMBER_MOTOR2 = 0;
+	
+	//Gearmech
+	public static final int GEAR_MECH_PIVOT = 0;
+	public static final int GEAR_MECH_INTAKE = 0;
+	public static final int TOP_SET_POINT_ANGLE = 0;
 }

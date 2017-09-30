@@ -111,6 +111,7 @@ public class OI {
 		// OperatorButtonStart.whenPressed(command());
 		OperatorButtonX.whenPressed(new ClimberGo(true));
 		OperatorButtonA.cancelWhenPressed(new ClimberStopClimbing());
+		OperatorButtonY.toggleWhenPressed(new PrintPotentiometerValue());
 	}
 
 }

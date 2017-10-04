@@ -98,10 +98,13 @@ public class Robot extends IterativeRobot {
 	// Auto modes
 	private final String NothingAuto = "Nothing";
 	private final String TestAuto = "Test Auto";
+	private final String CrossBaseline = "Cross Baseline";
+	private final String CenterGear = "Center Gear";
+	private final String SideGear = "Side Gear";
 
 	private final String[] AutoModes = {
 
-			NothingAuto, TestAuto,
+			NothingAuto, TestAuto, CrossBaseline, CenterGear, SideGear
 
 	};
 
@@ -120,8 +123,9 @@ public class Robot extends IterativeRobot {
 		table.putStringArray("Auto List", AutoModes);
 
 		// Initialize cameras
-		CameraServer.getInstance().startAutomaticCapture(1);
-		CameraServer.getInstance().startAutomaticCapture(0);
+		//TODO look for camera
+//		CameraServer.getInstance().startAutomaticCapture(1);
+//		CameraServer.getInstance().startAutomaticCapture(0);
 
 	}
 
@@ -176,6 +180,19 @@ public class Robot extends IterativeRobot {
 		default:
 			autonomousCommand = new NothingAuto();
 			break;
+		
+		case CrossBaseline:
+			autonomousCommand = new CrossBaselineAuto();
+			break;
+			
+		case CenterGear:
+			autonomousCommand = new CenterGearAuto();
+			break;
+			
+		case SideGear:
+			autonomousCommand = new SideGearAuto();
+			break;
+			
 		}
 
 		// schedule the autonomous command (example)

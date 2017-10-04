@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 public class Drivetrain extends PIDSubsystem {
 
 	static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
-	public static RobotDrive myRobot = new RobotDrive(2, 3, 0, 1);
+	public static RobotDrive myRobot = new RobotDrive(0, 1, 2, 3);
 	public static Solenoid shiftingPiston = new Solenoid(RobotMap.SHIFTING_PISTON);
 	public static Encoder encoder = new Encoder(2, 3, true, Encoder.EncodingType.k4X);
 	public static Timer timer = new Timer();

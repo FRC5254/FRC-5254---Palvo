@@ -23,6 +23,7 @@ public class RobotMap {
 	public static final int OPERATOR_JOYSTICK = 1;
 	public static final int DRIVER_THROTTLE_AXIS = 1;
 	public static final int DRIVER_TURN_AXIS = 4;
+	public static final int OPERATIOR_THROTTLE_AXIS = 0;
 
 	// Gyro
 	public static final int GYRO = 1;
@@ -40,11 +41,11 @@ public class RobotMap {
 	public static final double  TURN_D = 0.0;
 	
 	//Climber
-	public static final int CLIMBER_MOTOR = 0;
-	public static final int CLIMBER_MOTOR2 = 0;
+	public static final int CLIMBER_MOTOR = 11;
+	public static final int CLIMBER_MOTOR2 = 10;
 	
 	//Gearmech
-	public static final int GEAR_MECH_PIVOT = 0;
-	public static final int GEAR_MECH_INTAKE = 0;
+	public static final int GEAR_MECH_PIVOT = 5;
+	public static final int GEAR_MECH_INTAKE = 4;
 	public static final int TOP_SET_POINT_ANGLE = 0;
 }

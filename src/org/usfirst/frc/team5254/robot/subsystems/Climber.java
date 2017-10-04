@@ -5,7 +5,6 @@ import org.usfirst.frc.team5254.robot.commands.ClimberStopClimbing;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
-import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *

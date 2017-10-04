@@ -2,8 +2,7 @@ package org.usfirst.frc.team5254.robot.subsystems;
 
 import org.usfirst.frc.team5254.robot.Robot;
 import org.usfirst.frc.team5254.robot.RobotMap;
-
-import com.ctre.CANTalon;
+import org.usfirst.frc.team5254.robot.commands.GearMechInit;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Spark;
@@ -13,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class GearMech extends Subsystem {
+	//TODO clean up subsystem
 	
 
 	private Spark gearMechPivot  = new Spark (RobotMap.GEAR_MECH_PIVOT);
@@ -21,9 +21,10 @@ public class GearMech extends Subsystem {
 	private double potAngle;
 	
     public void initDefaultCommand() {
-    	
-    }	
-public void on(boolean intake) { //TODO does this work?
+    	setDefaultCommand(new GearMechInit());
+    }
+    
+    public void on(boolean intake) { //TODO does this work?
     	
     	if (intake == true) {
     		gearMechIntake.set(1.0);
@@ -42,7 +43,7 @@ public void on(boolean intake) { //TODO does this work?
     	
     	if (direction == true) {
     		
-    		if (potAngle < setPoint) {
+   		if (potAngle < setPoint) {
     			gearMechPivot.set(.25);
     		} else {
     			Robot.GearMech.disableMoterPower();
@@ -74,6 +75,32 @@ public void on(boolean intake) { //TODO does this work?
     public void drivePivotMotor(double power) {
     	gearMechPivot.set(power);
     	
+    }
+    
+    public boolean gearMechStop() {// TODO does this work?
+    	return (Math.abs(gearMechPivot.getRaw()) > 30);// TODO Needs to be tuned 
+    }
+    
+    
+    ///TODO jaank code below
+//    public void pivotUp(double Throttle) {
+//    	gearMechPivot.set(Throttle);
+//    }
+    
+    public void pivotMotorOn(boolean up) {
+        System.out.println(gearMechPivot.getRaw());// TODO remove line when unneeded
+
+    	if (up == true) {
+    		
+    		gearMechPivot.set(-0.5);
+    	} else {
+    		gearMechPivot.set(0.5);
+    		
+    		}
+    }
+    
+    public void pivotMotorOff() {
+    	gearMechPivot.set(0.0);
     }
 }
 

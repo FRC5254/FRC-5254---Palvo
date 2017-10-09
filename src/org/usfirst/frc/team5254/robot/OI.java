@@ -51,26 +51,40 @@ public class OI {
 		 * shift up Right Bumper = shift down B = stop hat spinning/stop
 		 * shooting
 		 */
+		
+		DriverButtonA.whenPressed(new GearMechOn(true));
+		DriverButtonB.whenPressed(new GearMechArmOff());
+		DriverButtonB.whenPressed(new GearMechOff());
+		DriverButtonB.whenPressed(new ClimberStop());
+		DriverButtonX.whenPressed(new ClimberGo(true));
+		DriverButtonY.whenPressed(new GearMechOn(false));
+//		DriverButtonStart.whenPressed(command);
 		DriverButtonBack.whenPressed(new DrivetrainSlowTurn());
 		DriverButtonBack.whenInactive(new DrivetrainDriveWithJoystick());
-		DriverButtonBumperLeft.whenPressed(new DrivetrainShiftUp());
-		DriverButtonBumperLeft.whenInactive(new DrivetrainShiftDown());
-		DriverButtonBumperRight.whenPressed(new DrivetrainShiftUp());
-		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
-		// DriverButtonLeftJoystickPress.whenPressed(command);
-		// DriverButtonRightJoystickPress.whenPressed(command);
+		DriverButtonBumperRight.whenPressed(new GearMechArmUp());
+		DriverButtonBumperLeft.whenPressed(new GearMechArmDown());
+		//DriverButtonBumperLeft.whenPressed(new DrivetrainShiftUp());
+		//DriverButtonBumperLeft.whenInactive(new DrivetrainShiftDown());
+		//DriverButtonBumperRight.whenPressed(new DrivetrainShiftUp());
+		//DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
+//		 DriverButtonLeftJoystickPress.whenPressed(command);
+//		 DriverButtonRightJoystickPress.whenPressed(command);
 
 		
-		// OperatorButtonStart.whenPressed(command());
-		OperatorButtonA.whenPressed(new GearMechOn(true));
-		OperatorButtonB.whenPressed(new GearMechPivotOff());
+//		OperatorButtonA.whenPressed(new GearMechOn(true));
+//		OperatorButtonB.whenPressed(new GearMechArmOff());
 //		OperatorButtonB.whenPressed(new GearMechOff());
-		OperatorButtonB.whenPressed(new ClimberStopClimbing());
-		OperatorButtonX.whenPressed(new ClimberGo(true));
-		OperatorButtonY.whenActive(new GearMechPivotActivate(false));
-		OperatorButtonY.whenInactive(new GearMechPivotActivate(true));
-		OperatorButtonBack.whenPressed(new GearMechPivotActivate(false));
+//		OperatorButtonB.whenPressed(new ClimberStop());
+//		OperatorButtonX.whenPressed(new ClimberGo(true));
+//		OperatorButtonY.whenPressed(new GearMechOn(false));
 //		OperatorButtonY.toggleWhenPressed(new PrintPotentiometerValue());
+//		OperatorButtonStart.whenPressed(command);
+//		OperatorButtonBack.whenPressed(command);
+//		OperatorButtonBack.whenInactive(command));
+//		OperatorButtonBumperRight.whenPressed(new GearMechArmActivate(false));
+//		OperatorButtonBumperLeft.whenPressed(new GearMechArmActivate(true));
+//		OperatorButtonLeftJoystickPress.whenPressed(command);
+//		OperatorButtonRightJoystickPress.whenPressed(command);
 	}
 
 }

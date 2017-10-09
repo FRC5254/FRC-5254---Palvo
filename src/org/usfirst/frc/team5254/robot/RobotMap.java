@@ -17,6 +17,9 @@ public class RobotMap {
 	public static final int DRIVE_ENCODER_RIGHT1 = 2;
 	public static final int DRIVE_ENCODER_LEFT2 = 1;
 	public static final int DRIVE_ENCODER_RIGHT2 = 3;
+	public static final int TOP_ARM_LIMIT_SWITCH =  4;
+	public static final int BOTTOM_ARM_LIMIT_SWITCH =  5;
+	
 
 	// Joysticks
 	public static final int DRIVER_JOYSTICK = 0;
@@ -29,8 +32,13 @@ public class RobotMap {
 	public static final int GYRO = 1;
 
 	// CAN Talons
+	public static final int CLIMBER_MOTOR = 11;
+	public static final int CLIMBER_MOTOR2 = 10;
 	
-
+	// Sparks
+	public static final int GEAR_MECH_ARM = 5;
+	public static final int GEAR_MECH_INTAKE = 4;
+	
 	// Drivetrain
 	public static final int WHEEL_DIAMETER = 0;
 	public static final int ENCODER_TICKS = 0;
@@ -39,13 +47,7 @@ public class RobotMap {
 	public static final double  TURN_P = 0.0;
 	public static final double  TURN_I = 0.0;
 	public static final double  TURN_D = 0.0;
-	
-	//Climber
-	public static final int CLIMBER_MOTOR = 11;
-	public static final int CLIMBER_MOTOR2 = 10;
-	
+
 	//Gearmech
-	public static final int GEAR_MECH_PIVOT = 5;
-	public static final int GEAR_MECH_INTAKE = 4;
 	public static final int TOP_SET_POINT_ANGLE = 0;
 }

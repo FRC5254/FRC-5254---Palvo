@@ -7,11 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class GearMechPivotOff extends Command {
+public class GearMechArmDown extends Command {
+	
 
-    public GearMechPivotOff() {
+    public GearMechArmDown() {
+    	// eg. requires(chassis);
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.GearMech);
     }
 
@@ -21,12 +22,12 @@ public class GearMechPivotOff extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.GearMech.pivotMotorOff();
+    		Robot.GearMech.armMotorDown();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+       return false;
     }
 
     // Called once after isFinished returns true
@@ -36,6 +37,6 @@ public class GearMechPivotOff extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end(); 
+    	end();
     }
 }

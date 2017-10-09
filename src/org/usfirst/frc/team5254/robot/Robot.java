@@ -2,6 +2,7 @@
 package org.usfirst.frc.team5254.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -124,7 +125,7 @@ public class Robot extends IterativeRobot {
 
 		// Initialize cameras
 		//TODO look for camera
-//		CameraServer.getInstance().startAutomaticCapture(1);
+		//CameraServer.getInstance().startAutomaticCapture(1);
 //		CameraServer.getInstance().startAutomaticCapture(0);
 
 	}
@@ -227,6 +228,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		System.out.println(Robot.GearMech.bottomButton.get());
+		System.out.println(Robot.GearMech.topButton.get());
 	}
 
 	/**

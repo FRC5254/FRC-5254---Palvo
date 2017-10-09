@@ -12,7 +12,7 @@ public class SetGearMechAngle extends Command {
 	boolean direction;
 	double angle;
 	
-    public SetGearMechAngle() {
+    public SetGearMechAngle(boolean direction, double angle) {
        
     	this.angle = angle;
     	this.direction = direction;
@@ -25,7 +25,7 @@ public class SetGearMechAngle extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.GearMech.setPivotAngle(direction, angle);
+    	Robot.GearMech.setArmAngle(direction, angle);
     }
 
     // Make this return true when this Command no longer needs to run execute()

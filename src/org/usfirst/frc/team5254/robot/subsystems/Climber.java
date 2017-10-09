@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5254.robot.subsystems;
 import org.usfirst.frc.team5254.robot.RobotMap;
-import org.usfirst.frc.team5254.robot.commands.ClimberStopClimbing;
+import org.usfirst.frc.team5254.robot.commands.ClimberStop;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.CANTalon;
@@ -27,7 +27,7 @@ public class Climber extends Subsystem {
 	}
 	@Override
     public void initDefaultCommand() {
-        setDefaultCommand(new ClimberStopClimbing());
+        setDefaultCommand(new ClimberStop());
     }
     
 	public void on (double percent) {

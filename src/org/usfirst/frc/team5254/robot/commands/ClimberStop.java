@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5254.robot.commands;
 
+
 import org.usfirst.frc.team5254.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -7,15 +8,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class GearMechPivotActivate extends Command {
-	
-boolean up;
+public class ClimberStop extends Command {
 
-    public GearMechPivotActivate(boolean up) {
-    	// eg. requires(chassis);
+    public ClimberStop() {
         // Use requires() here to declare subsystem dependencies
-    	requires(Robot.GearMech);
-    	this.up = up;
+        // eg. requires(chassis);
+    	requires(Robot.Climber);
     }
 
     // Called just before this Command runs the first time
@@ -24,12 +22,12 @@ boolean up;
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.GearMech.pivotMotorOn(up);
+    	Robot.Climber.off();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-       return Robot.GearMech.gearMechStop();
+        return false;
     }
 
     // Called once after isFinished returns true
@@ -39,6 +37,5 @@ boolean up;
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class SideGearAuto extends CommandGroup {
 
     public SideGearAuto() {
+    	
     	double angle = 45;
     	
     	if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Blue) {
@@ -21,7 +22,8 @@ public class SideGearAuto extends CommandGroup {
     	addSequential(new AutoDriveToDistance(0.5, 10.0));// TODO tune
     	addSequential(new AutoPIDTurn(angle)); // TODO get vlaues from previous code (SASSY)
     	addSequential(new AutoDriveToDistance(0.5, 5.0));// TODO tune
-    	addSequential(new GearMechPivotActivate(false));// TODO do other placing method (drop and outtake)
-    	
+    	addSequential(new GearMechArmDown());// TODO do other placing method (drop and outtake)
+//    	addSequential(new AutoDropGear(1)); //TODO this is back up code
+    	addSequential(new AutoDriveToDistance(-0.5, 10.0));// TODO BS numbers
     }
 }

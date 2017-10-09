@@ -7,15 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
+public class GearMechArmOff extends Command {
 
-
-public class GearMechOn extends Command {
-
-	boolean intake;
-	
-    public GearMechOn(boolean intake) {
-        requires(Robot.GearMech);
-        this.intake = intake;
+    public GearMechArmOff() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.GearMech);
     }
 
     // Called just before this Command runs the first time
@@ -24,7 +21,7 @@ public class GearMechOn extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.GearMech.on(intake);
+    	Robot.GearMech.armMotorOff();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -34,12 +31,11 @@ public class GearMechOn extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.GearMech.off();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
+    	end(); 
     }
 }

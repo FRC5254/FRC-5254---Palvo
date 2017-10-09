@@ -25,6 +25,6 @@ public class GearMechInit extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new GearMechOff());
-    	addParallel(new GearMechPivotOff());
+    	addParallel(new GearMechArmOff());
     }
 }

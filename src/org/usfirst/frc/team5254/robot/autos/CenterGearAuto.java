@@ -27,12 +27,15 @@ public class CenterGearAuto extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new AutoDriveToDistance(0.5, 67.0));//TODO tune
-    	addSequential(new GearMechArmDown());// TODO does this finish
-    	addSequential(new AutoDriveToDistance(-0.5, 34.5)); //TODO tune
     	
-//    	addSequential(new AutoDropGear(1));// TODO this is back up code
-//    	addSequential(new AutoDriveToDistance(-0.5, 10.0)); // TODO BS #s
+    	addSequential(new AutoDriveToDistance(0.85, 79.0));
+    	addSequential(new AutoDropGear(1));
+    	addSequential(new AutoDriveToDistance(-0.75, 34.5));
+//    	addSequential(new AutoPIDTurn(140));// TODO not the right #
+//    	addSequential(new AutoDriveToDistance(-0.75, 100.0));//TODO test
+//    	addSequential(new AutoPIDTurn(60));
+//    	addSequential(new AutoDriveToDistance(0.75, 200));
+    	addParallel(new GearMechArmUp());
     	
     }
 }

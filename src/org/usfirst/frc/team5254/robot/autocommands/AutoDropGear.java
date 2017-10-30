@@ -28,12 +28,12 @@ public class AutoDropGear extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	// TODO Robot.GearMech.armMotorOn(true);
+    	 Robot.GearMech.armMotorDown();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return timer.get() > time || Robot.GearMech.gearMechStop(); // TODO Work?
+        return timer.get() > time;
     }
 
     // Called once after isFinished returns true

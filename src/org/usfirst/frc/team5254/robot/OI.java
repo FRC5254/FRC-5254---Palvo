@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5254.robot;
 
+import org.usfirst.frc.team5254.robot.triggers.DoubleButton;
 import org.usfirst.frc.team5254.robot.commands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -44,7 +45,11 @@ public class OI {
 		Button OperatorButtonStart = new JoystickButton(operator, 8);
 		Button OperatorButtonLeftJoystickPress = new JoystickButton(operator, 9);
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
-
+		
+		// defining triggers
+		DoubleButton DriverButtonXAndBumper = new DoubleButton(driver, 3, 6);
+		
+		
 		/*
 		 * set driver buttons to activate commands A = start hat spinning/start
 		 * shooting X = spin up fly wheels Y = start hat spinning Left Bumper =
@@ -52,37 +57,39 @@ public class OI {
 		 * shooting
 		 */
 		
-		DriverButtonA.whenPressed(new GearMechOn(true));
-		DriverButtonB.whenPressed(new GearMechArmOff());
-		DriverButtonB.whenPressed(new GearMechOff());
+//		DriverButtonA.whenPressed(new GearMechOn(true));
+//		DriverButtonB.whenPressed(new GearMechOff());
 		DriverButtonB.whenPressed(new ClimberStop());
-		DriverButtonX.whenPressed(new ClimberGo(true));
-		DriverButtonY.whenPressed(new GearMechOn(false));
-//		DriverButtonStart.whenPressed(command);
-		DriverButtonBack.whenPressed(new DrivetrainSlowTurn());
-		DriverButtonBack.whenInactive(new DrivetrainDriveWithJoystick());
-		DriverButtonBumperRight.whenPressed(new GearMechArmUp());
-		DriverButtonBumperLeft.whenPressed(new GearMechArmDown());
-		//DriverButtonBumperLeft.whenPressed(new DrivetrainShiftUp());
-		//DriverButtonBumperLeft.whenInactive(new DrivetrainShiftDown());
-		//DriverButtonBumperRight.whenPressed(new DrivetrainShiftUp());
-		//DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
+//		DriverButtonB.whenPressed(new GearMechArmOff());
+//		DriverButtonX.whenPressed(new GearMechArmDown());
+//		DriverButtonY.whenPressed(new GearMechArmUp());
+		DriverButtonStart.whenPressed(new ClimberGoSlow(0.25)); //This number should be a positive
+		DriverButtonBack.whenPressed(new ClimberGo(true));
+//		DriverButtonBack.whenPressed(new DrivetrainSlowTurn());
+//		DriverButtonBack.whenInactive(new DrivetrainDriveWithJoystick());
+		DriverButtonBumperLeft.whenPressed(new DrivetrainShiftUp());
+		DriverButtonBumperRight.whenPressed(new DrivetrainShiftDown());
+		DriverButtonBumperLeft.whenPressed(new DrivetrainSlowTurn());
+		DriverButtonBumperRight.whenPressed(new DrivetrainDriveWithJoystick());
 //		 DriverButtonLeftJoystickPress.whenPressed(command);
 //		 DriverButtonRightJoystickPress.whenPressed(command);
+//		DriverButtonLeftJoystickPress.whenActive(new DrivetrainShiftUp());
+//		DriverButtonLeftJoystickPress.whenInactive(new DrivetrainShiftDown());
+		DriverButtonXAndBumper.whenActive(new GearMechPlace());
 
 		
-//		OperatorButtonA.whenPressed(new GearMechOn(true));
-//		OperatorButtonB.whenPressed(new GearMechArmOff());
-//		OperatorButtonB.whenPressed(new GearMechOff());
+		OperatorButtonA.whenPressed(new GearMechOn(true));
+		OperatorButtonB.whenPressed(new GearMechArmOff());
+		OperatorButtonB.whenPressed(new GearMechOff());
 //		OperatorButtonB.whenPressed(new ClimberStop());
-//		OperatorButtonX.whenPressed(new ClimberGo(true));
-//		OperatorButtonY.whenPressed(new GearMechOn(false));
+		OperatorButtonX.whenPressed(new GearMechArmDown());
+		OperatorButtonY.whenPressed(new GearMechArmUp());
 //		OperatorButtonY.toggleWhenPressed(new PrintPotentiometerValue());
 //		OperatorButtonStart.whenPressed(command);
 //		OperatorButtonBack.whenPressed(command);
 //		OperatorButtonBack.whenInactive(command));
-//		OperatorButtonBumperRight.whenPressed(new GearMechArmActivate(false));
-//		OperatorButtonBumperLeft.whenPressed(new GearMechArmActivate(true));
+		OperatorButtonBumperRight.whenPressed(new GearMechOn(false));
+		OperatorButtonBumperLeft.whenPressed(new GearMechOn(false));
 //		OperatorButtonLeftJoystickPress.whenPressed(command);
 //		OperatorButtonRightJoystickPress.whenPressed(command);
 	}

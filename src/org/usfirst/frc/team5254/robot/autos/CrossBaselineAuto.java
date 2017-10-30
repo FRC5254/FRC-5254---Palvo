@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5254.robot.autos;
 
+import org.usfirst.frc.team5254.robot.Robot;
 import org.usfirst.frc.team5254.robot.autocommands.AutoDriveToDistance;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -10,6 +11,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CrossBaselineAuto extends CommandGroup {
 
     public CrossBaselineAuto() {
+    	requires(Robot.Drivetrain);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -26,6 +28,8 @@ public class CrossBaselineAuto extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new AutoDriveToDistance(0.75, 100));
+    	 
+    	addSequential(new AutoDriveToDistance(0.5, 100));
+    	System.out.println(Robot.Drivetrain.encoder.get());
     }
 }

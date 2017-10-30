@@ -13,10 +13,10 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 public class Drivetrain extends PIDSubsystem {
 
-	static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
-	public static RobotDrive myRobot = new RobotDrive(0, 1, 2, 3);
+	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
+	public static RobotDrive myRobot = new RobotDrive(0, 1, 2, 3); // was 0, 1, 2, 3 
 	public static Solenoid shiftingPiston = new Solenoid(RobotMap.SHIFTING_PISTON);
-	public static Encoder encoder = new Encoder(2, 3, true, Encoder.EncodingType.k4X);
+	public static Encoder encoder = new Encoder(0, 1, true, Encoder.EncodingType.k4X);
 	public static Timer timer = new Timer();
 
 	
@@ -26,6 +26,11 @@ public class Drivetrain extends PIDSubsystem {
 	private double Throttle;
 	private double remainingDistance;
 	private double finalThrottle;
+	/* 
+	 * Below is the amount of ticks left that the acceleration will start
+	 * Make this # smaller if you want the robot to drive faster in the end of its driving
+	 */
+	private int tickAccerationfactor = RobotMap.ACCELERATION_FACTOR;
 
 	public Drivetrain() {
 		super("DriveTrain", RobotMap.TURN_P, RobotMap.TURN_I, RobotMap.TURN_D);
@@ -37,7 +42,6 @@ public class Drivetrain extends PIDSubsystem {
 	
 	public void drive(double Throttle, double Turn) {
 		myRobot.arcadeDrive(Throttle, Turn);
-
 	}
 	
 	public void stop() {
@@ -52,7 +56,7 @@ public class Drivetrain extends PIDSubsystem {
 	}
 
 	public void slowTurn(double Throttle, double Turn) {
-		myRobot.arcadeDrive(Throttle, 0.5 * Turn);
+		myRobot.arcadeDrive(Throttle, 0.65 * Turn);
 	}
 
 	public void shiftDown() {
@@ -94,8 +98,8 @@ public class Drivetrain extends PIDSubsystem {
 				* (RobotMap.WHEEL_DIAMETER * Math.PI);
 
 		if (Throttle > 0) {
-			if (remainingDistance < Throttle * 15) {
-				finalThrottle = remainingDistance / 15;// TODO time these values
+			if (remainingDistance < Throttle * tickAccerationfactor) {
+				finalThrottle = remainingDistance / tickAccerationfactor;// TODO time these values
 			} else {
 				finalThrottle = Throttle;
 			}
@@ -112,8 +116,8 @@ public class Drivetrain extends PIDSubsystem {
 				finalThrottle = 0.35;
 			}
 		} else {
-			if (remainingDistance < Math.abs(Throttle) * 15) {
-				finalThrottle = -remainingDistance / 15;
+			if (remainingDistance < Math.abs(Throttle) * tickAccerationfactor) {
+				finalThrottle = -remainingDistance / tickAccerationfactor;
 			} else {
 				finalThrottle = Throttle;
 

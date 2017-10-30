@@ -4,6 +4,7 @@ package org.usfirst.frc.team5254.robot.autocommands;
 import org.usfirst.frc.team5254.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**
  *
@@ -20,7 +21,8 @@ public class AutoPIDTurn extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.Drivetrain.PIDTurnInit();
+		Robot.Drivetrain.setSetpoint(Robot.Drivetrain.gyro.getAngle() + this.angle);
+		Robot.Drivetrain.enable();
 	}
 
 	// Called repeatedly when this Command is scheduled to run

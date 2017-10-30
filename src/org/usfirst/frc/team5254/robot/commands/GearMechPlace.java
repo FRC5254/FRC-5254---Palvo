@@ -1,5 +1,8 @@
 package org.usfirst.frc.team5254.robot.commands;
 
+import org.usfirst.frc.team5254.robot.Robot;
+import org.usfirst.frc.team5254.robot.autocommands.AutoDriveToDistance;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -8,6 +11,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class GearMechPlace extends CommandGroup {
 
     public GearMechPlace() {
+    	
+    	requires(Robot.Drivetrain);
+    	requires(Robot.GearMech);
+    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -25,6 +32,7 @@ public class GearMechPlace extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	//TODO will we need this
+    	addSequential(new GearMechArmDown());
+    	addParallel(new AutoDriveToDistance(-0.5, 5));//TODO mess with these values
     }
 }

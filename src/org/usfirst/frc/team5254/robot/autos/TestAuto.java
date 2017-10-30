@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5254.robot.autos;
 
 import org.usfirst.frc.team5254.robot.Robot;
+import org.usfirst.frc.team5254.robot.autocommands.AutoPIDTurn;
 import org.usfirst.frc.team5254.robot.autocommands.AutoPrintTimer;
 
 
@@ -14,7 +15,7 @@ public class TestAuto extends CommandGroup {
     public TestAuto() {
     	requires(Robot.Drivetrain);
 
+    	 addSequential(new AutoPIDTurn(90));
     	 addSequential(new AutoPrintTimer());
-    	
     }
 }

@@ -22,8 +22,11 @@ public class GearMech extends Subsystem {
 	private double potAngle;
 	
 	
-	double fastSpeed = 0.50;
-	double slowSpeed  = 0.20;
+	double fastSpeedDown = 0.70;
+	double fastSpeedUp = 0.70;
+	
+	double slowSpeedBottom  = 0.15;
+	double slowSpeedTop = 0.15;
 	
 	
     public void initDefaultCommand() {
@@ -50,19 +53,19 @@ public class GearMech extends Subsystem {
     	
     	// full speed when button isn't pressed
     	if (topButton.get() == false) {
-	    		gearMechArm.set(-slowSpeed); 
+	    		gearMechArm.set(-slowSpeedTop); 
 	    // Half speed when button is pressed
     		} else {
-    			gearMechArm.set(-fastSpeed);
+    			gearMechArm.set(-fastSpeedUp);
 	    	}
     }
     
     public void armMotorDown() {
     	// full speed when button isn't pressed
     	if (bottomButton.get() == false) {
-	    		gearMechArm.set(slowSpeed);
+	    		gearMechArm.set(slowSpeedBottom);
 	    	} else {
-	    		gearMechArm.set(fastSpeed);
+	    		gearMechArm.set(fastSpeedDown);
 	    	}
     }
     

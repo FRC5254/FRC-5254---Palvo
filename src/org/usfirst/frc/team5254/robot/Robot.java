@@ -4,6 +4,7 @@ package org.usfirst.frc.team5254.robot;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -95,17 +96,20 @@ public class Robot extends IterativeRobot {
 	public static Drivetrain Drivetrain = new Drivetrain();
 	public static Climber Climber = new Climber();
 	public static GearMech GearMech = new GearMech();
+	
+	public static PowerDistributionPanel pdp = new PowerDistributionPanel();
 
 	// Auto modes
 	private final String NothingAuto = "Nothing";
 	private final String TestAuto = "Test Auto";
 	private final String CrossBaseline = "Cross Baseline";
 	private final String CenterGear = "Center Gear";
-	private final String SideGear = "Side Gear";
+	private final String FeederSideGear = "Feeder Side Gear";
+	private final String BoilerSideGear = "Boiler Side Gear";
 
 	private final String[] AutoModes = {
 
-			NothingAuto, TestAuto, CrossBaseline, CenterGear, SideGear
+			NothingAuto, TestAuto, CrossBaseline, CenterGear, FeederSideGear, BoilerSideGear
 
 	};
 
@@ -123,10 +127,9 @@ public class Robot extends IterativeRobot {
 		NetworkTable table = NetworkTable.getTable("SmartDashboard");
 		table.putStringArray("Auto List", AutoModes);
 
-		// Initialize cameras
-		//TODO look for camera
-		//CameraServer.getInstance().startAutomaticCapture(1);
-//		CameraServer.getInstance().startAutomaticCapture(0);
+//		 Initialize cameras TODO get rio USB ports to work
+		CameraServer.getInstance().startAutomaticCapture(1);
+		CameraServer.getInstance().startAutomaticCapture(0);
 
 	}
 
@@ -190,9 +193,14 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new CenterGearAuto();
 			break;
 			
-		case SideGear:
-			autonomousCommand = new SideGearAuto();
+		case FeederSideGear:
+			autonomousCommand = new FeederSideGearAuto();
 			break;
+			
+		case BoilerSideGear:
+			autonomousCommand = new BoilerSideAuto();
+			break;
+		
 			
 		}
 
@@ -220,6 +228,7 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+
 	}
 
 	/**
@@ -228,8 +237,11 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		System.out.println(Robot.GearMech.bottomButton.get());
-		System.out.println(Robot.GearMech.topButton.get());
+//
+//		System.out.println("Channel 12 Front Left: " + pdp.getCurrent(12));
+//		System.out.println("Channel 13 Back Left: " + pdp.getCurrent(13));
+//		System.out.println("Channel 14 Front Right: " + pdp.getCurrent(14));
+//		System.out.println("Channel 15 Back Right: " + pdp.getCurrent(15));
 	}
 
 	/**

@@ -57,20 +57,18 @@ public class OI {
 		 * shooting
 		 */
 		
-//		DriverButtonA.whenPressed(new GearMechOn(true));
-//		DriverButtonB.whenPressed(new GearMechOff());
+		DriverButtonA.whenPressed(new ClimberGoSlow(0.25));
 		DriverButtonB.whenPressed(new ClimberStop());
-//		DriverButtonB.whenPressed(new GearMechArmOff());
-//		DriverButtonX.whenPressed(new GearMechArmDown());
-//		DriverButtonY.whenPressed(new GearMechArmUp());
-		DriverButtonStart.whenPressed(new ClimberGoSlow(0.25)); //This number should be a positive
+		DriverButtonX.whenPressed(new ClimberGo(true));
+//		DriverButtonY.whenPressed(command);
+//		DriverButtonStart.whenPressed(new ClimberGoSlow(0.25)); //This number should be a positive
 		DriverButtonBack.whenPressed(new ClimberGo(true));
 //		DriverButtonBack.whenPressed(new DrivetrainSlowTurn());
 //		DriverButtonBack.whenInactive(new DrivetrainDriveWithJoystick());
-		DriverButtonBumperLeft.whenPressed(new DrivetrainShiftUp());
-		DriverButtonBumperRight.whenPressed(new DrivetrainShiftDown());
+		DriverButtonBumperRight.whenPressed(new DrivetrainShiftUp());
+		DriverButtonBumperRight.whenReleased(new DrivetrainShiftDown());
 		DriverButtonBumperLeft.whenPressed(new DrivetrainSlowTurn());
-		DriverButtonBumperRight.whenPressed(new DrivetrainDriveWithJoystick());
+		DriverButtonBumperLeft.whenReleased(new DrivetrainDriveWithJoystick());
 //		 DriverButtonLeftJoystickPress.whenPressed(command);
 //		 DriverButtonRightJoystickPress.whenPressed(command);
 //		DriverButtonLeftJoystickPress.whenActive(new DrivetrainShiftUp());

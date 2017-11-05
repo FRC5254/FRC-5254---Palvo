@@ -198,7 +198,7 @@ public class Robot extends IterativeRobot {
 			break;
 			
 		case BoilerSideGear:
-			autonomousCommand = new BoilerSideAuto();
+			autonomousCommand = new BoilerSideGearAuto();
 			break;
 		
 			

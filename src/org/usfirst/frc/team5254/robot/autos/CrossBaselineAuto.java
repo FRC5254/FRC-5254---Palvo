@@ -30,6 +30,5 @@ public class CrossBaselineAuto extends CommandGroup {
         // arm.
     	 
     	addSequential(new AutoDriveToDistance(0.5, 100));
-    	System.out.println(Robot.Drivetrain.encoder.get());
     }
 }

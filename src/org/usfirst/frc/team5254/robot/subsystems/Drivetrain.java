@@ -56,7 +56,7 @@ public class Drivetrain extends PIDSubsystem {
 	}
 
 	public void slowTurn(double Throttle, double Turn) {
-		myRobot.arcadeDrive(Throttle, 0.65 * Turn);
+		myRobot.arcadeDrive(Throttle, 0.5 * Turn);
 	}
 
 	public void shiftDown() {

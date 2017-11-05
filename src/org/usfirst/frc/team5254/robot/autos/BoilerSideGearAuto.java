@@ -11,11 +11,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class BoilerSideAuto extends CommandGroup {
+public class BoilerSideGearAuto extends CommandGroup {
 
-    public BoilerSideAuto() {
+    public BoilerSideGearAuto() {
     	
-    	double angle = 60;
+    	double angle = 60.0;
     	
     	if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red) {
     		angle = -angle;

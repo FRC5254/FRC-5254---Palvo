@@ -15,7 +15,7 @@ public class TestAuto extends CommandGroup {
     public TestAuto() {
     	requires(Robot.Drivetrain);
 
-    	 addSequential(new AutoPIDTurn(90));
+    	 addSequential(new AutoPIDTurn(90.0));
     	 addSequential(new AutoPrintTimer());
     }
 }

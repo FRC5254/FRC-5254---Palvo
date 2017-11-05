@@ -13,7 +13,7 @@ public class FeederSideGearAuto extends CommandGroup {
 
     public FeederSideGearAuto() {
     	
-    	double angle = 60;
+    	double angle = 60.0;
     	
     	if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Blue) {
     		angle = -angle;

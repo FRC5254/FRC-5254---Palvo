@@ -10,8 +10,8 @@ public class AutoDriveToDistance extends Command {
 	double Distance;
 
 	public AutoDriveToDistance(double Throttle, double Distance) {
-		//TODO Requires DT?
-		
+		// TODO Requires DT?
+
 		this.Throttle = Throttle;
 		this.Distance = Distance;
 	}
@@ -28,7 +28,7 @@ public class AutoDriveToDistance extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		 
+
 		return Robot.Drivetrain.driveAutoIsFinished();
 	}
 

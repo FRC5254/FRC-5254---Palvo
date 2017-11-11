@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class CrossBaselineAuto extends CommandGroup {
 
-    public CrossBaselineAuto() {
-    	requires(Robot.Drivetrain);
-    	
-    	addSequential(new AutoDriveToDistance(0.5, 100));
-    }
+	public CrossBaselineAuto() {
+		requires(Robot.Drivetrain);
+
+		addSequential(new AutoDriveToDistance(0.5, 100));
+	}
 }

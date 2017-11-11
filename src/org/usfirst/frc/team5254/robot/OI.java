@@ -1,19 +1,28 @@
 package org.usfirst.frc.team5254.robot;
 
-import org.usfirst.frc.team5254.robot.commands.*;
+import org.usfirst.frc.team5254.robot.commands.ClimberGo;
+import org.usfirst.frc.team5254.robot.commands.ClimberGoSlow;
+import org.usfirst.frc.team5254.robot.commands.ClimberStop;
+import org.usfirst.frc.team5254.robot.commands.DrivetrainDriveWithJoystick;
+import org.usfirst.frc.team5254.robot.commands.DrivetrainShiftDown;
+import org.usfirst.frc.team5254.robot.commands.DrivetrainShiftUp;
+import org.usfirst.frc.team5254.robot.commands.DrivetrainSlowTurn;
+import org.usfirst.frc.team5254.robot.commands.GearMechArmDown;
+import org.usfirst.frc.team5254.robot.commands.GearMechArmOff;
+import org.usfirst.frc.team5254.robot.commands.GearMechArmUp;
+import org.usfirst.frc.team5254.robot.commands.GearMechOff;
+import org.usfirst.frc.team5254.robot.commands.GearMechOn;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-
 public class OI {
 
 	// Defining the controllers for the driver and operator (Xbox controllers)
 	public Joystick driver = new Joystick(RobotMap.DRIVER_JOYSTICK);
 	public XboxController operator = new XboxController(RobotMap.OPERATOR_JOYSTICK);
-	
 
 	// Defining driver buttons
 	Button DriverButtonA = new JoystickButton(driver, 1);
@@ -40,12 +49,12 @@ public class OI {
 	Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
 
 	public OI() {
-		
+
 		// Set driver buttons to activate commands
 		DriverButtonA.whenPressed(new ClimberGoSlow(0.25));
 		DriverButtonB.whenPressed(new ClimberStop());
 		DriverButtonX.whenPressed(new ClimberGo(true));
-		DriverButtonStart.whenPressed(new ClimberGoSlow(0.25)); //This number should be a positive
+		DriverButtonStart.whenPressed(new ClimberGoSlow(0.25)); // This number should be a positive
 		DriverButtonBack.whenPressed(new ClimberGo(true));
 		DriverButtonBumperRight.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperRight.whenReleased(new DrivetrainShiftDown());

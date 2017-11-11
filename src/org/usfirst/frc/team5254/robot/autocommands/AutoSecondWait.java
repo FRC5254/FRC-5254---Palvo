@@ -9,25 +9,30 @@ public class AutoSecondWait extends Command {
 	Timer timer = new Timer();
 
 	public AutoSecondWait(double time) {
-		
+
 		this.time = time;
 	}
 
+	@Override
 	protected void initialize() {
 		timer.reset();
 		timer.start();
 	}
 
+	@Override
 	protected void execute() {
 	}
 
+	@Override
 	protected boolean isFinished() {
 		return timer.get() > time;
 	}
 
+	@Override
 	protected void end() {
 	}
 
+	@Override
 	protected void interrupted() {
 	}
 }

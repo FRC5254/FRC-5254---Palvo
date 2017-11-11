@@ -4,15 +4,14 @@ import org.usfirst.frc.team5254.robot.Robot;
 import org.usfirst.frc.team5254.robot.autocommands.AutoPIDTurn;
 import org.usfirst.frc.team5254.robot.autocommands.AutoPrintTimer;
 
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class TestAuto extends CommandGroup {
 
-    public TestAuto() {
-    	requires(Robot.Drivetrain);
+	public TestAuto() {
+		requires(Robot.Drivetrain);
 
-    	 addSequential(new AutoPIDTurn(90.0));
-    	 addSequential(new AutoPrintTimer());
-    }
+		addSequential(new AutoPIDTurn(90.0));
+		addSequential(new AutoPrintTimer());
+	}
 }

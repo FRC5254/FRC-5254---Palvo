@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutoTimerTurn extends Command {
 
 	Timer timer = new Timer();
-	
+
 	double time, turn;
 
 	public AutoTimerTurn(double turn, double time) {

@@ -5,34 +5,39 @@ import org.usfirst.frc.team5254.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ClimberGo extends Command {
-	
+
 	double climberspeed;
-	
-    public ClimberGo(boolean direction) {
-    	requires(Robot.Climber);
-    	
-    	//TODO put this in the thing
-    	if (direction == true) {
-    		climberspeed = -1.0;
-    	} else {
-    		climberspeed = 1.0;
-    	}
-    }
 
-    protected void initialize() {
-    }
+	public ClimberGo(boolean direction) {
+		requires(Robot.Climber);
 
-    protected void execute() {
-    	Robot.Climber.on(climberspeed); 
-    }
+		// TODO put this in the thing
+		if (direction == true) {
+			climberspeed = -1.0;
+		} else {
+			climberspeed = 1.0;
+		}
+	}
 
-    protected boolean isFinished() {
-        return false;
-    }
+	@Override
+	protected void initialize() {
+	}
 
-    protected void end() {
-    }
+	@Override
+	protected void execute() {
+		Robot.Climber.on(climberspeed);
+	}
 
-    protected void interrupted() {
-    }
+	@Override
+	protected boolean isFinished() {
+		return false;
+	}
+
+	@Override
+	protected void end() {
+	}
+
+	@Override
+	protected void interrupted() {
+	}
 }

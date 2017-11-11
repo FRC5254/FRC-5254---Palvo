@@ -1,30 +1,34 @@
 package org.usfirst.frc.team5254.robot.commands;
 
-
 import org.usfirst.frc.team5254.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ClimberStop extends Command {
 
-    public ClimberStop() {
-    	requires(Robot.Climber);
-    }
+	public ClimberStop() {
+		requires(Robot.Climber);
+	}
 
-    protected void initialize() {
-    }
+	@Override
+	protected void initialize() {
+	}
 
-    protected void execute() {
-    	Robot.Climber.off();
-    }
+	@Override
+	protected void execute() {
+		Robot.Climber.off();
+	}
 
-    protected boolean isFinished() {
-        return false;
-    }
+	@Override
+	protected boolean isFinished() {
+		return false;
+	}
 
-    protected void end() {
-    }
+	@Override
+	protected void end() {
+	}
 
-    protected void interrupted() {
-    }
+	@Override
+	protected void interrupted() {
+	}
 }

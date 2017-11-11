@@ -4,11 +4,11 @@ import org.usfirst.frc.team5254.robot.Robot;
 import org.usfirst.frc.team5254.robot.RobotMap;
 import org.usfirst.frc.team5254.robot.commands.DrivetrainDriveWithJoystick;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 public class Drivetrain extends PIDSubsystem {
@@ -19,15 +19,14 @@ public class Drivetrain extends PIDSubsystem {
 	public static Encoder encoder = new Encoder(0, 1, true, Encoder.EncodingType.k4X);
 	public static Timer timer = new Timer();
 
-	
 	double angle;
 	private static int finalTicks;
 	private int remainingTicks;
 	private double Throttle;
 	private double remainingDistance;
 	private double finalThrottle;
-	
-	//Below is the amount of ticks left that the acceleration will start
+
+	// Below is the amount of ticks left that the acceleration will start
 	private int tickAccerationfactor = RobotMap.ACCELERATION_FACTOR;
 
 	public Drivetrain() {
@@ -35,20 +34,21 @@ public class Drivetrain extends PIDSubsystem {
 		setAbsoluteTolerance(3.0);
 		getPIDController().setContinuous(true);
 	}
-	
-	//Utilities
-	
+
+	// Utilities
+
 	public void drive(double Throttle, double Turn) {
 		myRobot.arcadeDrive(Throttle, Turn);
 	}
-	
+
 	public void stop() {
 		myRobot.arcadeDrive(0.0, 0.0);
 
 	}
-	
-	//Teleop
-	
+
+	// Teleop
+
+	@Override
 	protected void initDefaultCommand() {
 		setDefaultCommand(new DrivetrainDriveWithJoystick());
 	}
@@ -65,8 +65,8 @@ public class Drivetrain extends PIDSubsystem {
 		shiftingPiston.set(false);
 	}
 
-	//Autonomous
-	
+	// Autonomous
+
 	public void initEncoder(boolean direction) {
 		encoder.reset();
 		encoder.setMaxPeriod(0.1);
@@ -135,25 +135,26 @@ public class Drivetrain extends PIDSubsystem {
 		}
 
 		drive(-finalThrottle, -gyro.getAngle() * RobotMap.Kp);
-		 System.out.println(gyro.getAngle() + " " + Throttle + " " +
-		 remainingDistance + " " + finalThrottle + " " + encoder.get() + " " +
-		 remainingTicks);
+		System.out.println(gyro.getAngle() + " " + Throttle + " " + remainingDistance + " " + finalThrottle + " "
+				+ encoder.get() + " " + remainingTicks);
 	}
-	
-	public void autoDistanceDriveFast(){
+
+	public void autoDistanceDriveFast() {
 		remainingTicks = Math.abs(finalTicks) - Math.abs(encoder.get());
-		drive(-Throttle,-gyro.getAngle() * RobotMap.Kp);
+		drive(-Throttle, -gyro.getAngle() * RobotMap.Kp);
 	}
-	
+
 	public void PIDTurnInit() {
 		Robot.Drivetrain.setSetpoint(gyro.getAngle() + this.angle);
 		Robot.Drivetrain.enable();
 	}
 
+	@Override
 	protected double returnPIDInput() {
 		return gyro.getAngle();
 	}
 
+	@Override
 	protected void usePIDOutput(double output) {
 		drive(0.0, output);
 	}
@@ -162,7 +163,4 @@ public class Drivetrain extends PIDSubsystem {
 		return remainingTicks < 21; // ~ 1/2 "
 	}
 
-	
-
-	
 }

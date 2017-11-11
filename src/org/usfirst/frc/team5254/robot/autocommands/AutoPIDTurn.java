@@ -16,7 +16,7 @@ public class AutoPIDTurn extends Command {
 
 	@Override
 	protected void initialize() {
-		Robot.Drivetrain.setSetpoint(Drivetrain.gyro.getAngle() + this.angle); //TODO did i do a bad here
+		Robot.Drivetrain.setSetpoint(Drivetrain.gyro.getAngle() + this.angle); // TODO did i do a bad here
 		Robot.Drivetrain.enable();
 	}
 

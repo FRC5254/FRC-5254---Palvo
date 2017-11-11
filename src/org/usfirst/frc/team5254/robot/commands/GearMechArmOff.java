@@ -6,25 +6,30 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class GearMechArmOff extends Command {
 
-    public GearMechArmOff() {
-    	requires(Robot.GearMech);
-    }
+	public GearMechArmOff() {
+		requires(Robot.GearMech);
+	}
 
-    protected void initialize() {
-    }
+	@Override
+	protected void initialize() {
+	}
 
-    protected void execute() {
-    	Robot.GearMech.armMotorOff();
-    }
+	@Override
+	protected void execute() {
+		Robot.GearMech.armMotorOff();
+	}
 
-    protected boolean isFinished() {
-        return false;
-    }
+	@Override
+	protected boolean isFinished() {
+		return false;
+	}
 
-    protected void end() {
-    }
+	@Override
+	protected void end() {
+	}
 
-    protected void interrupted() {
-    	end(); 
-    }
+	@Override
+	protected void interrupted() {
+		end();
+	}
 }

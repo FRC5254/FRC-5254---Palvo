@@ -7,29 +7,34 @@ import edu.wpi.first.wpilibj.command.Command;
 public class GearMechOn extends Command {
 
 	boolean intake;
-	
-    public GearMechOn(boolean intake) {
-        requires(Robot.GearMech);
-        
-        this.intake = intake;
-    }
 
-    protected void initialize() {
-    }
+	public GearMechOn(boolean intake) {
+		requires(Robot.GearMech);
 
-    protected void execute() {
-    	Robot.GearMech.on(intake);
-    }
+		this.intake = intake;
+	}
 
-    protected boolean isFinished() {
-        return false;
-    }
+	@Override
+	protected void initialize() {
+	}
 
-    protected void end() {
-    	Robot.GearMech.off();
-    }
+	@Override
+	protected void execute() {
+		Robot.GearMech.on(intake);
+	}
 
-    protected void interrupted() {
-    	end();
-    }
+	@Override
+	protected boolean isFinished() {
+		return false;
+	}
+
+	@Override
+	protected void end() {
+		Robot.GearMech.off();
+	}
+
+	@Override
+	protected void interrupted() {
+		end();
+	}
 }

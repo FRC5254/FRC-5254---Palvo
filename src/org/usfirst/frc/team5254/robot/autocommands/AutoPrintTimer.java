@@ -6,24 +6,29 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class AutoPrintTimer extends Command {
 
-    public AutoPrintTimer() {
-       
-    }
+	public AutoPrintTimer() {
 
-    protected void initialize() {
-    	Robot.stopTimer();
-    }
+	}
 
-    protected void execute() {
-    }
+	@Override
+	protected void initialize() {
+		Robot.stopTimer();
+	}
 
-    protected boolean isFinished() {
-        return true;
-    }
+	@Override
+	protected void execute() {
+	}
 
-    protected void end() {
-    }
+	@Override
+	protected boolean isFinished() {
+		return true;
+	}
 
-    protected void interrupted() {
-    }
+	@Override
+	protected void end() {
+	}
+
+	@Override
+	protected void interrupted() {
+	}
 }

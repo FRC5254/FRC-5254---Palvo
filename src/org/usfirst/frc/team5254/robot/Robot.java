@@ -1,6 +1,16 @@
 
 package org.usfirst.frc.team5254.robot;
 
+import org.usfirst.frc.team5254.robot.autos.BoilerSideGearAuto;
+import org.usfirst.frc.team5254.robot.autos.CenterGearAuto;
+import org.usfirst.frc.team5254.robot.autos.CrossBaselineAuto;
+import org.usfirst.frc.team5254.robot.autos.FeederSideGearAuto;
+import org.usfirst.frc.team5254.robot.autos.NothingAuto;
+import org.usfirst.frc.team5254.robot.autos.TestAuto;
+import org.usfirst.frc.team5254.robot.subsystems.Climber;
+import org.usfirst.frc.team5254.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team5254.robot.subsystems.GearMech;
+
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
@@ -11,21 +21,18 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team5254.robot.autos.*;
-import org.usfirst.frc.team5254.robot.subsystems.*;
-
 public class Robot extends IterativeRobot {
-	
+
 	static Timer timer = new Timer();
 
 	Command autonomousCommand;
 	NetworkTable table;
-	
+
 	public static OI oi;
 	public static Drivetrain Drivetrain = new Drivetrain();
 	public static Climber Climber = new Climber();
 	public static GearMech GearMech = new GearMech();
-	
+
 	public static PowerDistributionPanel pdp = new PowerDistributionPanel();
 
 	// Auto modes
@@ -37,9 +44,8 @@ public class Robot extends IterativeRobot {
 	private final String BoilerSideGear = "Boiler Side Gear";
 
 	// Defining the autonomous commands into a string to be listed on the dashboard
-	private final String[] AutoModes = {
-			NothingAuto, TestAuto, CrossBaseline, CenterGear, FeederSideGear, BoilerSideGear
-	};	
+	private final String[] AutoModes = { NothingAuto, TestAuto, CrossBaseline, CenterGear, FeederSideGear,
+			BoilerSideGear };
 
 	@Override
 	public void robotInit() {
@@ -56,9 +62,10 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledInit() {
-		
+
 	}
-	public static void stopTimer(){
+
+	public static void stopTimer() {
 		System.out.println(timer.get());
 	}
 
@@ -69,27 +76,27 @@ public class Robot extends IterativeRobot {
 
 	/**
 	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString code to get the auto name from the text box below the Gyro
+	 * between different autonomous modes using the dashboard. The sendable chooser
+	 * code works with the Java SmartDashboard. If you prefer the LabVIEW Dashboard,
+	 * remove all of the chooser code and uncomment the getString code to get the
+	 * auto name from the text box below the Gyro
 	 *
 	 * You can add additional auto modes by adding additional commands to the
-	 * chooser code above (like the commented example) or additional comparisons
-	 * to the switch structure below with additional strings & commands.
+	 * chooser code above (like the commented example) or additional comparisons to
+	 * the switch structure below with additional strings & commands.
 	 */
 
 	@Override
 	public void autonomousInit() {
 		String autoSelected = SmartDashboard.getString("Auto Selector", NothingAuto);
-		
+
 		timer.reset();
 		timer.start();
-		
+
 		System.out.format("Auto: %s '%s'%n", m_ds.getAlliance(), autoSelected);
-		
+
 		switch (autoSelected) {
-		
+
 		case TestAuto:
 			autonomousCommand = new TestAuto();
 			break;
@@ -97,19 +104,19 @@ public class Robot extends IterativeRobot {
 		default:
 			autonomousCommand = new NothingAuto();
 			break;
-		
+
 		case CrossBaseline:
 			autonomousCommand = new CrossBaselineAuto();
 			break;
-			
+
 		case CenterGear:
 			autonomousCommand = new CenterGearAuto();
 			break;
-			
+
 		case FeederSideGear:
 			autonomousCommand = new FeederSideGearAuto();
 			break;
-			
+
 		case BoilerSideGear:
 			autonomousCommand = new BoilerSideGearAuto();
 			break;
@@ -130,12 +137,11 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 		/**
-		 * This makes sure that the autonomous stops running when
-		 * teleop starts running. If you want the autonomous to
-		 * continue until interrupted by another command, remove
-		 * this line or comment it out.
+		 * This makes sure that the autonomous stops running when teleop starts running.
+		 * If you want the autonomous to continue until interrupted by another command,
+		 * remove this line or comment it out.
 		 */
-		 
+
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 	}

@@ -6,34 +6,39 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class AutoDropGear extends Command {
-	
+
 	Timer timer = new Timer();
 	double time;
 
-    public AutoDropGear(double time) {
-    	requires(Robot.GearMech);
-    	
-    	this.time = time;
-    }
+	public AutoDropGear(double time) {
+		requires(Robot.GearMech);
 
-    protected void initialize() {
-    	timer.reset();
-    	timer.start();
-    }
+		this.time = time;
+	}
 
-    protected void execute() {
-    	 Robot.GearMech.armMotorDown();
-    }
+	@Override
+	protected void initialize() {
+		timer.reset();
+		timer.start();
+	}
 
-    protected boolean isFinished() {
-        return timer.get() > time;
-    }
+	@Override
+	protected void execute() {
+		Robot.GearMech.armMotorDown();
+	}
 
-    protected void end() {
-    	timer.stop();
-    }
+	@Override
+	protected boolean isFinished() {
+		return timer.get() > time;
+	}
 
-    protected void interrupted() {
-    	end();
-    }
+	@Override
+	protected void end() {
+		timer.stop();
+	}
+
+	@Override
+	protected void interrupted() {
+		end();
+	}
 }

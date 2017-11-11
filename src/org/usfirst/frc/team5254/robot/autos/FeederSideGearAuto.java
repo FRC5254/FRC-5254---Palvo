@@ -6,9 +6,6 @@ import org.usfirst.frc.team5254.robot.commands.*;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- * 
- */
 public class FeederSideGearAuto extends CommandGroup {
 
     public FeederSideGearAuto() {
@@ -17,7 +14,7 @@ public class FeederSideGearAuto extends CommandGroup {
     	
     	if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Blue) {
     		angle = -angle;
-    	} // TODO test
+    	}
     	
     	addSequential(new AutoDriveToDistance(0.75, 85.0));
     	addSequential(new AutoPIDTurn(angle)); 

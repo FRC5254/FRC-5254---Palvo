@@ -6,10 +6,7 @@ import org.usfirst.frc.team5254.robot.autocommands.AutoPIDTurn;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
-public class BoilerSideGearAndCrossFieldAuto extends CommandGroup {
+public class BoilerSideGearAndCrossFieldAuto extends CommandGroup { //TODO requires for all autos 
 
     public BoilerSideGearAndCrossFieldAuto() {
     	
@@ -27,19 +24,5 @@ public class BoilerSideGearAndCrossFieldAuto extends CommandGroup {
     	addSequential(new AutoDriveToDistance(1.0, 150.0));
     	addSequential(new AutoPIDTurn(angle2));// Left
     	addSequential(new AutoDriveToDistance(1.0, 250.0));
-    	
-// double angle = 60;
-//    	
-//    	if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Blue) {
-//    		angle = -angle;
-//    	} // TODO test
-//    	
-//    	addSequential(new AutoDriveToDistance(0.75, 83.0));
-//    	addSequential(new AutoPIDTurn(60)); 
-//    	addSequential(new AutoDriveToDistance(0.75, 28.0));// TODO tune
-//    	addSequential(new AutoDropGear(1));
-//    	addSequential(new AutoDriveToDistance(-0.75, 20.0));// TODO BS numbers
-//    	addSequential(new GearMechArmUp());
-    	
     }
 }

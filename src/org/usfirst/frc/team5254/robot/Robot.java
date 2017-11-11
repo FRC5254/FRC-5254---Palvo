@@ -2,7 +2,6 @@
 package org.usfirst.frc.team5254.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Timer;
@@ -15,83 +14,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5254.robot.autos.*;
 import org.usfirst.frc.team5254.robot.subsystems.*;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
- * 
- * ,:,,,,,,,,,,,,,,,:,;;:,,,,,,,,,;,,,,,,,,,:,,;:::;''';;;;;;;;;;;;;;;;;;;;;;;;;;;;''''''''''''';
-,;,,,,,,,,,,,,,,,,::,:::,,,,:,,:,,,,,,,,,:,,::::;''';;;;;;;;;;;;;;;;;;;;;;;;;;;;'''''''''''';;
-,;,,,,,,,,,,,,,,,,,,,:;;,,,:,,,:,,,,,,,IN THEORY;'''';;;;;;;;;;;;;;;;;;;;;;;;;;'''''''''''''';
-,;,,,,,,,,,,,,:,,,,,,::;:,:,,,,:,,,,,,,THE CODE'+++++';;;;;;;;;;;;;;;;;;;;;;;;;;;;''''''''''';
-,;,,,,,,,,,,,,,::,,,,,,,,:,,,,,:,,,,,WILL WORK NOW #####+;;;;;;;;;;;;;;;;;;;;;;;;;''''''''''';
-,',,,,,,,,,,,,,,,:,,,,,,,,,,,,,:,,,,,,:++#################+'';;;;;;;;;;;;;;;;;;;;;''''''''''';
-,;,,,,,,,,,,,,,,,,::,,,,,,,,,,,,,,,,,#+++###################+';;;;;;;;;;;;;;';'';'''''''''''';
-,',,,,,,,,,,,,,,,,,,:,,,,,,,,,:,,,,'++++######################';;;;;;;;;''';';''''''''''''''';
-,',,,,,,,,,,,,,,,,,,,:,,,,,,,,;,,,''+++++######################';;';;;;;;;;;;;;''''''''''''';;
-,;,,,,,,,,,,,,,,,,,,,,::,,,,,,;,,:+#+++++######################+';;;;;;;;;;;;;;;''''''''''''';
-,;,,,,,,,,,,,,,,,,,,,,,,:,,,,,',,++++++#########################+;;;;;;;;;;;;;;;;;;'''''''''';
-,;,,,,,,,,,,,,,,,,,,,,,,,:,,,,;,'##++++##########################';;;;;;;;;;;;;;;;;'''''''''';
-,:,,,,,,,,,,,,,,,,,,,,,,,,::,,;;###+++++##########################';;;;;''';';''''''''''''''''
-,:,,,,,,,,,,,,,,,,,,,,,,,,,::,:#+++++++############################;'';'''';;''''';'''''''''''
-,,:,,,,,,,,,,,,,,,,,,,,,,,,,,,;+###+++#############################';';;;';'''''''''''''''''''
-,,:,,,,,,,,,,,,,,,,,,,,,,,,,,,'####++###############################;;;;;';;;;''''''''''''''''
-,,:,,,,,,,,,,,,,,,,,,,,,,,,,,,+##++++###############################';;';;;;''''''''''''''''''
-,,:,,,,,,,,,,,,,,,,,,,,,,,,,,:######################################';;;'';;''''''''''''''''';
-,,:,,,,,,,,,,,,,,,,,,,,,,,,,,'#++###################################+;;;'';;''''''''''''''''';
-,,:,,,,,,,,,,,,,,,,,,,,,,,,,,'#+#####################################;;;;;;'''''''''''''''''';
-,,:,,,,,,,,,,,,,,,,,,,,,,,,,,'#;+###########+#######################+;';;;;'''''''''''''''''''
-:,:,,,,,,,,,,,,,,,,,,,,,,,,,:;+::+########++++++++++################+;;;;;;'''''''''''''''''''
-:;:,,,,,,,,,,,,,,,,,,,,,,,,:''+:,:+###+++++++++''''+#################;;'';;;';''''''''''''''''
-,,;,,,,,,,,,,,,,,,,,,,,,,,,,,'',,,:''''''''''''''''++################;;;';;;''''''''''''''''''
-,,;,,,,,,,,,,,,,,,,,,,,,,,,,:;::,:,:;;'''''''''''''++################';';;''''''''''''''''''''
-,,;,,,,,,,,,,,,,,,,,,,,,,,,,:;:::::::;;;;'''''''''''+################'';;;;;'''''';;''''''''''
-,,;,,,,,,,,,,,,,,,,,,,,,,,,,::;';;;;;;;;''''''''''''+################;''';;;''''''''''''''''''
-,,;,,,,,,,,,,,,,,,,,,,,,,,,,,:+++'';;;''''++++++'''''################'''''''''''''''''''''''';
-,,';:,,,,,,,,,,,,,,,,,,,,,,,,,;'+##'''''+#####++++'''+++############+;';''''''''''''''''''''';
-,,';:;,,,,,,,,,,,,,,,,,,,,,;;;;'++++'''+++++++'++++'''+++########+##+;''''''''''''''''''''''';
-,,';:;,,,,,,,,,,,,,,,,,,,,,;;:;#+##+':'++++##++++'''''''+######+'''#';;'''''''''''''''''''''';
-,,';,,,,,,,,,,,,,,,,,,,,,,,,;,:;''+';:''++++####+++'''''+####++''++#;';''''';'''''''''''''''';
-,,',,,,,,,,,,,,,,,,,,,,,,,,,;,::;'''::''+'++++++++++''''+###+++''+++;';';';'''''''''''''''''';
-,,',,,,,,,,,,,,,,,,,,,,,,,,,;,:::;;;,;''''+++''''''''''''###++'''+'';;''''''''''''''''''''''''
-,,;,,,,,,,,,,,,,,,,,,,,,,,,,;,::::::,''''''''''''''''''''++''+++''''''''''''''''''''''''''''''
-,,;:,,,,,,,,,,,,,,,,,,,,,,,,;,:::::,:''''''''''''''''''''''''+++''+'''''''''''''''''''''''''''
-,,::,,,,,,,,,,,,,,,,,,,,,,,,;,;:::;:;'''+'''''''''''''''';'''+++''#';;''''''''''''''''''''''''
-,,:;,,,,,,,,,,,,,,,,,,,,,,,,;,;::;;;'''+++''''''''''''''''''''''''#'';';;;;'''''''''''''''''''
-,',;,,,,,,,,,,,,,,,,,,,,,,,,;,::;;;++++'++''''''''''''''''''+''''##''';;'';'';''''''''''''''''
-':,;,,,,,,,,,,,,,,,,,,,,,,,,;,:;:;:'+++++';'''''++''''''''''''';#+#';;;'''''''''''''''''''''''
-,,,;,,,,,,,,,,,,,,,,,,,,,,,,;,:;;:::''+++'''''''++''''''''''''''+#';';''''''''''''''''''''''''
-,,,;,,,,,,,,,,,,,,,,,,,,,,,,;,:;::'''''''';''''''+'''''''''''''+++'';;;;''''''''''''''''''''''
-,,,',,,,,,,,,,,,,,,,,,,,,,,,',:;:'+#++'''''''''''+''''''''';''''++';''''''''''''''''''''''''''
-,,,',,,,,,,,,,,,,,,,,,,,,,,,',,;:+###++'''''''''''''''''''';'''''+;';;;;;'''''''''''''''''''''
-,,,;,,,,,,,,,,,,,,,,,,,,,,,,;,,;'+#####+''+''''''''''''''''''''''';;''''''''''''''''''''''''''
-,,,;,,,,,,,,,,,,,,,,,,,,,,,,;,,;':+#+##+#+++''''''''''''''''''''''';;'''''''''''''''''''''''''
-,,,;,,,,,,,,,,,,,,,,,,,,,,,,;,,:';;:;;;+++++++''+''''''''''''''''''#'';'''''''''''''''''''''''
-,,,;,,,,,,,,,,,,,,,,,,,,,,,,;,,,''''''++++++++'''''''''+''''''''''''#'''''''''''''''''''''''''
-,,,;,,,,,,,,,,,,,,,,,,,,,,,::,::''+++++++++++++++'''+++++'''''''''''+#''''''''''''''''''''''''
-,,,;:,,,,,,,,,,,,,,,,,,,,,,,::,::;;++##+++++++++++++++++++'''''''''''##+;;''''''''''''''''''''
-,,,::,,,,,,,,,,,,,,,,,,,,,,,::,,:;;''++++'''''++++++++++++''''''''''+###+';'''''''''''''''''''
-,,,::,,,,,,,,,,,,,,,,,,,,,,,:;:,+';;'''''''''+++++++++++++''''''''''+####+;'''''''''''''''''''
-,,,::,,,,,,,,,,,,,,,,,::,,,::;,+++;'''+++++++++++++++++++++''++'''+#######''''''''''''''''''''
-,,,:;,,,,,,:,,,,,,,,,,,:,,,::''++#++++++++++++++++++++++++++++'''##########'''''''''''''''''''
-,,,:;,,,,,,,,,,,,,,,,:::::,::+++####+++++++++###+++++++++++++''+###########+''''''''''''''''''
-,,,:;,,,,,,,,,,,,,,,,:::::,:;########+++##########++++++++++'+##############''''''''''''''''''
-,,,:;,,,,,,:,,,,,,,,,:::,::;+##########+++########++++++++++#################'''''''''''''''''
-,,,:;,,,,,,:,,,,,,,,,,::::;'############++#######+++++++++###################+''''''''''''''''
-,,,:;,,,::::,,,,,,,,,,:::;:##+##########++++####++++++++######################''''''''''''''''
-,,,:;:,,:::::::::,,:,:::;:+##############+++####++++++#########################'''''''''''''''
-::::;:,,,::::,:::,,::::;:;####################+++++#############################''''''''''''''
-::::;::::,:::::::,,::::::+#######################################################'''''''''''''
-:::::;::::::::::,::,::,:##########################################################''''''''''''
- *Robot code Ft. K20 
- */
 public class Robot extends IterativeRobot {
 	
 	static Timer timer = new Timer();
 
+	Command autonomousCommand;
 	NetworkTable table;
+	
 	public static OI oi;
 	public static Drivetrain Drivetrain = new Drivetrain();
 	public static Climber Climber = new Climber();
@@ -107,18 +36,11 @@ public class Robot extends IterativeRobot {
 	private final String FeederSideGear = "Feeder Side Gear";
 	private final String BoilerSideGear = "Boiler Side Gear";
 
+	// Defining the autonomous commands into a string to be listed on the dashboard
 	private final String[] AutoModes = {
-
 			NothingAuto, TestAuto, CrossBaseline, CenterGear, FeederSideGear, BoilerSideGear
+	};	
 
-	};
-
-	Command autonomousCommand;
-
-	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
-	 */
 	@Override
 	public void robotInit() {
 		oi = new OI();
@@ -127,17 +49,11 @@ public class Robot extends IterativeRobot {
 		NetworkTable table = NetworkTable.getTable("SmartDashboard");
 		table.putStringArray("Auto List", AutoModes);
 
-//		 Initialize cameras TODO get rio USB ports to work
+		// Initializing cameras
 		CameraServer.getInstance().startAutomaticCapture(1);
 		CameraServer.getInstance().startAutomaticCapture(0);
-
 	}
 
-	/**
-	 * This function is called once each time the robot enters Disabled mode.
-	 * You can use it to reset any subsystem information you want to clear when
-	 * the robot is disabled.
-	 */
 	@Override
 	public void disabledInit() {
 		
@@ -173,9 +89,6 @@ public class Robot extends IterativeRobot {
 		System.out.format("Auto: %s '%s'%n", m_ds.getAlliance(), autoSelected);
 		
 		switch (autoSelected) {
-		/*
-		 * TenBall, GearBaseLine, GearTenBall, GearTenBallAndCross, OP
-		 */
 		
 		case TestAuto:
 			autonomousCommand = new TestAuto();
@@ -200,53 +113,38 @@ public class Robot extends IterativeRobot {
 		case BoilerSideGear:
 			autonomousCommand = new BoilerSideGearAuto();
 			break;
-		
-			
 		}
 
-		// schedule the autonomous command (example)
+		// Schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			SmartDashboard.putString("DB/String 0", autoSelected);
 			autonomousCommand.start();
 		}
 	}
 
-	/**
-	 * This function is called periodically during autonomous
-	 */
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-	
 	}
 
 	@Override
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
+		/**
+		 * This makes sure that the autonomous stops running when
+		 * teleop starts running. If you want the autonomous to
+		 * continue until interrupted by another command, remove
+		 * this line or comment it out.
+		 */
+		 
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-
 	}
 
-	/**
-	 * This function is called periodically during operator control
-	 */
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-//
-//		System.out.println("Channel 12 Front Left: " + pdp.getCurrent(12));
-//		System.out.println("Channel 13 Back Left: " + pdp.getCurrent(13));
-//		System.out.println("Channel 14 Front Right: " + pdp.getCurrent(14));
-//		System.out.println("Channel 15 Back Right: " + pdp.getCurrent(15));
 	}
 
-	/**
-	 * This function is called periodically during test mode
-	 */
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();

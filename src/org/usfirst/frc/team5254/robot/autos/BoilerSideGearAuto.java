@@ -8,9 +8,6 @@ import org.usfirst.frc.team5254.robot.commands.GearMechArmUp;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
 public class BoilerSideGearAuto extends CommandGroup {
 
     public BoilerSideGearAuto() {
@@ -19,7 +16,7 @@ public class BoilerSideGearAuto extends CommandGroup {
     	
     	if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red) {
     		angle = -angle;
-    	} // TODO test
+    	}
     	
     	addSequential(new AutoDriveToDistance(0.75, 90.0));
     	addSequential(new AutoPIDTurn(angle)); 

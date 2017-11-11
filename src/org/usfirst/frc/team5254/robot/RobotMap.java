@@ -1,12 +1,6 @@
 
 package org.usfirst.frc.team5254.robot;
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
 public class RobotMap {
 
 	// Solenoids
@@ -32,7 +26,7 @@ public class RobotMap {
 	public static final int GYRO = 1;
 	
 
-	// CAN Talons
+	// CAN Talons 
 	public static final int CLIMBER_MOTOR = 11;
 	public static final int CLIMBER_MOTOR2 = 10;
 	
@@ -48,8 +42,8 @@ public class RobotMap {
 	public static final double  TURN_P = 0.2;
 	public static final double  TURN_I = 0.02;
 	public static final double  TURN_D = 0.4;
-	public static final int ACCELERATION_FACTOR = 10;
+	public static final int ACCELERATION_FACTOR = 10; //Make this # smaller if you want the robot to drive faster in the end of its driving
 
-	//Gearmech
+	// Gearmech
 	public static final int TOP_SET_POINT_ANGLE = 0;
 }

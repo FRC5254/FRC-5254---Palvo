@@ -6,9 +6,6 @@ import org.usfirst.frc.team5254.robot.autocommands.AutoPIDTurn;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
 public class CenterGearAndCrossFieldAuto extends CommandGroup {
 
     public CenterGearAndCrossFieldAuto() {
@@ -22,9 +19,9 @@ public class CenterGearAndCrossFieldAuto extends CommandGroup {
     	}
     	
     	addSequential(new CenterGearAuto());
-    	addSequential(new AutoPIDTurn(angle1));// left
+    	addSequential(new AutoPIDTurn(angle1));// Left
     	addSequential(new AutoDriveToDistance(1.0, 80));
-    	addSequential(new AutoPIDTurn(angle2));// right
+    	addSequential(new AutoPIDTurn(angle2));// Right
     	addSequential(new AutoDriveToDistance(1.0, 340));
     }
 }

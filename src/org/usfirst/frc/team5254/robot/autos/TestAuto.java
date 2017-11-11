@@ -7,9 +7,6 @@ import org.usfirst.frc.team5254.robot.autocommands.AutoPrintTimer;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
 public class TestAuto extends CommandGroup {
 
     public TestAuto() {

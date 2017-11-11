@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 public class Drivetrain extends PIDSubsystem {
 
 	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
-	public static RobotDrive myRobot = new RobotDrive(0, 1, 2, 3); // was 0, 1, 2, 3 
+	public static RobotDrive myRobot = new RobotDrive(0, 1, 2, 3);
 	public static Solenoid shiftingPiston = new Solenoid(RobotMap.SHIFTING_PISTON);
 	public static Encoder encoder = new Encoder(0, 1, true, Encoder.EncodingType.k4X);
 	public static Timer timer = new Timer();
@@ -26,10 +26,8 @@ public class Drivetrain extends PIDSubsystem {
 	private double Throttle;
 	private double remainingDistance;
 	private double finalThrottle;
-	/* 
-	 * Below is the amount of ticks left that the acceleration will start
-	 * Make this # smaller if you want the robot to drive faster in the end of its driving
-	 */
+	
+	//Below is the amount of ticks left that the acceleration will start
 	private int tickAccerationfactor = RobotMap.ACCELERATION_FACTOR;
 
 	public Drivetrain() {
@@ -153,15 +151,10 @@ public class Drivetrain extends PIDSubsystem {
 	}
 
 	protected double returnPIDInput() {
-		// Return your input value for the PID loop
-		// e.g. a sensor, like a potentiometer:
-		// yourPot.getAverageVoltage() / kYourMaxVoltage
 		return gyro.getAngle();
 	}
 
 	protected void usePIDOutput(double output) {
-		// Use output to drive your system, like a motor
-		// e.g. yourMotor.set(output);
 		drive(0.0, output);
 	}
 

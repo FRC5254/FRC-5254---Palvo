@@ -3,7 +3,6 @@ package org.usfirst.frc.team5254.robot;
 import org.usfirst.frc.team5254.robot.commands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -16,7 +15,7 @@ public class OI {
 
 	// defining the controllers for the driver and operator
 	public Joystick driver = new Joystick(RobotMap.DRIVER_JOYSTICK);
-	public XboxController operator = new XboxController(RobotMap.OPERATOR_JOYSTICK);
+	public Joystick operator = new Joystick(RobotMap.OPERATOR_JOYSTICK);
 
 	@SuppressWarnings("unused")
 	public OI() {
